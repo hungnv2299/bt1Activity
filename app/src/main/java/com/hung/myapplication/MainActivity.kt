@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Androidly Alert")
-        builder.setMessage("We have a message")
+        var state: String = this.lifecycle.currentState.toString()
+        builder.setMessage(this.lifecycle.currentState.toString())
+        Toast.makeText(this, this.lifecycle.currentState.toString(), Toast.LENGTH_SHORT)
 
         builder.setPositiveButton(android.R.string.yes) { dialog, which ->
             Toast.makeText(
@@ -43,7 +45,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             ).show()
         }
         builder.show()
-        onPause()
     }
 
     override fun onStart() {
